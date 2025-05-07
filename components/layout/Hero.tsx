@@ -35,7 +35,7 @@ export default function Hero() {
       transition: {
         duration: 5,
         repeat: Infinity,
-        repeatType: "loop",
+        repeatType: "loop" as const,
         ease: "easeInOut"
       }
     }
@@ -77,8 +77,16 @@ export default function Hero() {
       {/* Icônes flottantes */}
       <motion.div 
         className="absolute top-1/3 right-1/6 text-violet-400 opacity-70"
-        variants={floatingIconVariants}
-        animate="animate"
+        animate={{
+          y: [0, -15, 0],
+          rotate: [0, 5, 0, -5, 0],
+        }}
+        transition={{
+          duration: 5,
+          repeat: Infinity,
+          repeatType: "loop",
+          ease: "easeInOut"
+        }}
       >
         <Brain size={40} />
       </motion.div>
